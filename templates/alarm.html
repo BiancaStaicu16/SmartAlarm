@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hour_alarm minute_alarm</title>
+    <link rel= "stylesheet" type= "text/css" href= "/static/css/base.css">
+    <link rel="shortcut icon" href="{{ url_for('main_route', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="main-page">
+        <div style="width: 30%">
+            <h1>ALARMS</h1>
+            {% for item in list_of_alarms %}
+                <div class="all_alarms">{{ item }}</div>
+            {% endfor %}
+        </div>
+
+
+        <div style="width: 30%">
+            <img src="/static/img/clock.png" class="clock-img">
+            <h1>Alarm Clock</h1>
+            <form action="{{ url_for('handle_data') }}" method="post">
+                <input type="datetime-local" name="date_time" class="alarm"><br><br>
+                <label for="clockname">Alarm name:</label>
+                <input type="text" id="clockname" name="clockname"><br>
+                <label for="brefingsname">Include news briefing?</label>
+                <input type="checkbox" id="brefingsname" name="brefingsname"><br>
+                <label for="weather">Include weather briefing</label>
+                <input type="checkbox" id="weather"  name="weather" ><br><br>
+                <button type="submit" class="color_of_the_submit_button">Submit</button><br>
+            </form>
+        </div>
+
+        <div style="width: 30%">
+            <h1>Covid19 Updates</h1>
+            {% for item in covid_list %}
+                <div class="covid-updates">{{item}}</div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</body>
+</html>
